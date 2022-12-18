@@ -12,7 +12,7 @@ const Navbar = () => {
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar color='success' position="static">
-				<Toolbar>
+				<Toolbar > 
 					<Grid container justifyContent="flex-end">
 						{isAuth
 							? <Button className={classes.loginBtn} variant="outlined" color='success'>Выйти</Button>
