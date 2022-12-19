@@ -1,8 +1,18 @@
 import { Button, Container, Grid } from '@mui/material';
 import { Box } from '@mui/system';
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../..';
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { async } from '@firebase/util';
 
 const Login = () => {
+	const {auth} = useContext(Context);
+
+	const login = async () => {
+		const provider = new GoogleAuthProvider()
+		const {user} = await signInWithPopup(auth, provider)
+		console.log(user);
+	}
 	return (
 		<Container>
 			<Grid container
@@ -16,7 +26,7 @@ const Login = () => {
 					direction={"column"}
 				>
 					<Box p={5}>
-						<Button variant="contained" color="success">Войти c помощью Google</Button>
+						<Button onClick={login} variant="contained" color="success">Войти c помощью Google</Button>
 					</Box>
 				</Grid>
 			</Grid>
